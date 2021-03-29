@@ -1,0 +1,76 @@
+<div style="width: 500px; margin: auto;">
+    <div *ngIf="currentEmployee" class="edit-form">
+      <h4>Employee {{currentEmployee.firstName }} {{currentEmployee.lastName }}</h4>
+      <form>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            [(ngModel)]="currentEmployee.firstName"
+            name="First Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            [(ngModel)]="currentEmployee.lastName"
+            name="Last Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phoneNo">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phoneNo"
+            [(ngModel)]="currentEmployee.phoneNo"
+            name="phoneNo"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentEmployee.email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            [(ngModel)]="currentEmployee.address"
+            name="address"
+          />
+        </div>
+
+      </form>
+  
+      <button class="badge badge-danger mr-2" (click)="deleteEmployee()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateEmployee()"
+      >
+        Update
+      </button>
+      <p></p>
+    </div>
+  
+    <div *ngIf="!currentEmployee">
+      <br />
+      <p>This employee is not accessible</p>
+    </div>
+  </div>

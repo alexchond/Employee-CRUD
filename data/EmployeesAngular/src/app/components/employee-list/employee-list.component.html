@@ -1,0 +1,79 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by name"
+          [(ngModel)]="fname"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchByName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Employee List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let employee of employees; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setCurrentEmployee(employee, i)"
+
+        >
+          <h6>{{employee.firstName}} {{employee.lastName}}</h6>
+        </li>
+      </ul>
+  
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentEmployee">
+        <h4>Employee</h4>
+        <div>
+          <label><strong>First Name: {{ currentEmployee.firstName }}</strong></label> 
+        </div>
+        <div>
+          <label><strong>Last Name: {{ currentEmployee.lastName }}</strong></label>
+  
+        </div>
+        <div>
+          <label><strong>Phone Number: {{ currentEmployee.phoneNo }}</strong></label>
+  
+        </div>
+        <div>
+          <label><strong>Email: {{ currentEmployee.email }}</strong></label>
+  
+        </div>
+        <div>
+          <label><strong>Address: {{ currentEmployee.address }}</strong></label>
+  
+        </div>
+        <div class="col-md-6">
+          <div>
+            <a class="badge badge-warning" 
+            routerLink="/edit/{{currentEmployee.id}}">
+              Edit
+            </a>
+        </div>
+        <div>
+          <a class="badge badge-warning" 
+          routerLink="/delete/{{currentEmployee.id}}">
+            Delete
+          </a>
+        </div>
+        </div>
+      </div>
+  
+      <div *ngIf="!currentEmployee">
+        <br />
+        <p>Please click on a Employee</p>
+      </div>
+    </div>
+  </div>
